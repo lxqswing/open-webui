@@ -10,7 +10,6 @@ export default defineConfig({
 			targets: [
 				{
 					src: 'node_modules/onnxruntime-web/dist/*.jsep.*',
-
 					dest: 'wasm'
 				}
 			]
@@ -28,5 +27,10 @@ export default defineConfig({
 	},
 	esbuild: {
 		pure: process.env.ENV === 'dev' ? [] : ['console.log', 'console.debug']
+	},
+	preview: {
+		host: true, // 允许通过 IP 或域名访问
+		port: 4173, // 可以自定义端口
+		allowedHosts: ['ai.juxiangsys.cn'] // 添加你的域名
 	}
 });
